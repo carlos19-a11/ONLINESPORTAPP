@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:onlinesports/Pages/Constant.dart';
 
-import 'Pages/Home_Screen.dart';
+import 'Routes/routes.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const HomeScreen(),
+          appBarTheme: const AppBarTheme(
+        color: KBGSecunColor,
+        elevation: 0,
+      )),
+      debugShowCheckedModeBanner: false,
+      title: 'Multi - Login',
+      initialRoute: 'mainPage',
+      routes: routes,
     );
   }
 }

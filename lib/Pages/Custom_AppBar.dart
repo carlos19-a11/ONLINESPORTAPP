@@ -46,6 +46,9 @@ class CustomAppBar extends StatelessWidget {
           ],
         ),
         CircleAvatar(
+          backgroundImage: AssetImage(
+            'assets/icons/hombre.png',
+          ),
           backgroundColor: KPrimaryColor,
         )
       ],

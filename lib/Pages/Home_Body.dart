@@ -24,26 +24,28 @@ class _HomeBodyState extends State<HomeBody> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              CustomAppBar(),
-              SizedBox(
-                height: 20,
-              ),
-              SearchBar(),
-              SizedBox(
-                height: 20,
-              ),
-              ProductoSlider(),
-              SizedBox(
-                height: 20,
-              ),
-              CategorPage(),
-              SizedBox(
-                width: 20,
-              ),
-              Container(height: 250, child: RecentProducts())
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                CustomAppBar(),
+                SizedBox(
+                  height: 20,
+                ),
+                SearchBar(),
+                SizedBox(
+                  height: 20,
+                ),
+                ProductoSlider(),
+                SizedBox(
+                  height: 20,
+                ),
+                CategorPage(),
+                SizedBox(
+                  width: 20,
+                ),
+                Container(height: 250, child: RecentProducts())
+              ],
+            ),
           ),
         ),
       ),
