@@ -24,13 +24,25 @@ class SignUpTenPage extends StatelessWidget {
         ),
         _Titulo(),
         _TextField(),
-        _Botton()
+      // _Botton()
+
+        
       ],
     ));
   }
 }
 
 class _Botton extends StatelessWidget {
+
+  final String username;
+    const _Botton(
+      {
+  
+      required this.username});
+     
+
+
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -42,7 +54,7 @@ class _Botton extends StatelessWidget {
         child: const TextFrave(
             text: 'Registrarse', color: Colors.white, fontSize: 18),
         onPressed: () {
-          signUp('0', '1', '2', '3', '4');
+          signUp(username, '1', '2', '3', '4');
         },
       ),
     );
@@ -50,13 +62,18 @@ class _Botton extends StatelessWidget {
 }
 
 // ignore: must_be_immutable
-class _TextField extends StatelessWidget {
-  TextEditingController username = TextEditingController();
-  TextEditingController password = TextEditingController();
-  TextEditingController passwordConfirma = TextEditingController();
-  TextEditingController email = TextEditingController();
-  TextEditingController direccion = TextEditingController();
-  TextEditingController telefono = TextEditingController();
+class _TextField extends StatefulWidget {
+  @override
+  State<_TextField> createState() => _TextFieldState();
+}
+
+class _TextFieldState extends State<_TextField> {
+  final username = TextEditingController();
+  final password = TextEditingController();
+  final passwordConfirma = TextEditingController();
+  final email = TextEditingController();
+  final direccion = TextEditingController();
+  final telefono = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -102,6 +119,7 @@ class _TextField extends StatelessWidget {
               type: TextInputType.number,
               texto: 'Dirección'),
           const SizedBox(height: 20),
+      _Botton(username: username.text)
         ],
       ),
     );
