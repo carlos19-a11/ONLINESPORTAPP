@@ -3,11 +3,14 @@ import 'package:onlinesports/screens/login10/signup_ten_screen.dart';
 
 import '../../Pages/Home_Screen.dart';
 import '../../Widgets/text_frave.dart';
+import '../../api/auht.dart';
 import 'Widgets/header.dart';
 import 'Widgets/logo.dart';
 import 'Widgets/text_field_custom.dart';
 
 class LoginTenPage extends StatelessWidget {
+  const LoginTenPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,15 +24,26 @@ class LoginTenPage extends StatelessWidget {
         _Titulo(),
         const SizedBox(height: 40),
         _EmailAndPassword(),
-        _ForgotPassword(),
         const SizedBox(height: 40),
-        _BottonSignIn()
       ],
     ));
   }
 }
 
 class _BottonSignIn extends StatelessWidget {
+  final String email;
+  final String password;
+
+  const _BottonSignIn({
+    required this.email,
+    required this.password,
+  });
+  // StatelessElement createElement() {
+  //   // TODO: implement createElement
+
+  //   return super.createElement();
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -41,8 +55,10 @@ class _BottonSignIn extends StatelessWidget {
             child: const TextFrave(
                 text: 'Iniciar Seción', color: Colors.white, fontSize: 18),
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => HomeScreen()));
+              print('--->AQUI');
+              print(email);
+              print(password);
+              signIn(email, password, context);
             }));
   }
 }
@@ -58,12 +74,19 @@ class _ForgotPassword extends StatelessWidget {
   }
 }
 
-class _EmailAndPassword extends StatelessWidget {
-  TextEditingController username = TextEditingController();
-  TextEditingController password = TextEditingController();
+class _EmailAndPassword extends StatefulWidget {
+  @override
+  State<_EmailAndPassword> createState() => _EmailAndPasswordState();
+}
 
+final email = TextEditingController();
+final password = TextEditingController();
+
+class _EmailAndPasswordState extends State<_EmailAndPassword> {
   @override
   Widget build(BuildContext context) {
+    print('--->${email.text}');
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: Column(
@@ -71,7 +94,7 @@ class _EmailAndPassword extends StatelessWidget {
           TextFieldCustom(
               icono: Icons.mail_outline,
               type: TextInputType.emailAddress,
-              controller: username,
+              controller: email,
               texto: 'Correo electronico'),
           const SizedBox(height: 20),
           TextFieldCustom(
@@ -80,6 +103,11 @@ class _EmailAndPassword extends StatelessWidget {
               type: TextInputType.text,
               pass: true,
               texto: 'Contraseña'),
+          _ForgotPassword(),
+          _BottonSignIn(
+            email: email.text,
+            password: password.text,
+          )
         ],
       ),
     );

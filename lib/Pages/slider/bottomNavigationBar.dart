@@ -41,10 +41,10 @@ class bottomNavigationBar extends StatelessWidget {
               ),
               iconSize: 22,
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const HomeScreen()));
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //         builder: (context) => const HomeScreen()));
               },
             ),
             IconButton(

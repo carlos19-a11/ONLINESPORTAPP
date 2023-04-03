@@ -1,6 +1,7 @@
 // ignore_for_file: file_names, constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:onlinesports/screens/login10/login_ten_screen.dart';
 
 // este es nustro color primario
 const KPrimaryColor = Color(0xFFACBDAA);
@@ -32,3 +33,44 @@ const KHalfSizedBox = SizedBox(
 const kHalfWidthsizedBox = SizedBox(
   height: KDefaultPadding / 2,
 );
+
+class Constant extends StatelessWidget {
+  const Constant({
+    super.key,
+    required this.borderadius,
+    required this.margin,
+    required this.padding,
+    required this.onTap,
+    this.height = 50,
+    this.width = 50,
+    required this.child,
+  });
+
+  final BorderRadiusGeometry? borderadius;
+  final EdgeInsetsGeometry? margin;
+  final EdgeInsetsGeometry? padding;
+  final VoidCallback? onTap;
+  final double? height;
+  final double? width;
+  final Widget? child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      // color: color ?? Colors.white,
+      borderRadius: borderadius ?? BorderRadius.circular(8.0),
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      child: InkWell(
+        onTap: onTap,
+        child: Container(
+          alignment: Alignment.center,
+          margin: margin,
+          padding: padding,
+          height: height,
+          width: width,
+          child: child,
+        ),
+      ),
+    );
+  }
+}

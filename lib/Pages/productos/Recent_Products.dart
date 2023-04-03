@@ -3,6 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:onlinesports/Pages/Constant.dart';
 
+import '../../DetellesShoes.dart';
+import '../../shoes.dart';
+
 class RecentProducts extends StatelessWidget {
   final List<Map<String, dynamic>> productList = [
     {
@@ -71,13 +74,19 @@ class _RecentSingleProductsState extends State<RecentSingleProducts> {
 
   final Color inactiveColor = Colors.black38;
 
+  var shoes;
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         GestureDetector(
           onTap: () {
-            print('Se tocó el Container');
+            Navigator.of(context).push(PageRouteBuilder(
+              pageBuilder: (context, animation, _) {
+                return DetellesShoes(shoes: shoes);
+              },
+            ));
           },
           child: Container(
             height: 180,

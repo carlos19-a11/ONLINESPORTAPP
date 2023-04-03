@@ -5,9 +5,8 @@ import 'package:flutter/material.dart';
 import 'Constant.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({
-    super.key,
-  });
+  final String username;
+  const CustomAppBar({super.key, required this.username});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +36,7 @@ class CustomAppBar extends StatelessWidget {
           children: [
             Text("Unair"),
             Text(
-              "Lahore, PKR",
+              "Bienvenido $username",
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,

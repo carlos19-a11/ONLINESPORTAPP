@@ -24,24 +24,31 @@ class SignUpTenPage extends StatelessWidget {
         ),
         _Titulo(),
         _TextField(),
-      // _Botton()
-
-        
+        // _Botton()
       ],
     ));
   }
 }
 
 class _Botton extends StatelessWidget {
-
+  final String email;
   final String username;
-    const _Botton(
-      {
-  
-      required this.username});
-     
+  final String password;
+  final String phone;
+  final String adressfisical;
+  // @override
+  // StatelessElement createElement() {
+  //   // TODO: implement createElement
 
+  //   return super.createElement();
+  // }
 
+  const _Botton(
+      {required this.email,
+      required this.username,
+      required this.password,
+      required this.phone,
+      required this.adressfisical});
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +61,7 @@ class _Botton extends StatelessWidget {
         child: const TextFrave(
             text: 'Registrarse', color: Colors.white, fontSize: 18),
         onPressed: () {
-          signUp(username, '1', '2', '3', '4');
+          signUp(email, username, password, phone, adressfisical, context);
         },
       ),
     );
@@ -70,10 +77,10 @@ class _TextField extends StatefulWidget {
 class _TextFieldState extends State<_TextField> {
   final username = TextEditingController();
   final password = TextEditingController();
-  final passwordConfirma = TextEditingController();
+  // final passwordConfirma = TextEditingController();
   final email = TextEditingController();
-  final direccion = TextEditingController();
-  final telefono = TextEditingController();
+  final adressfisical = TextEditingController();
+  final phone = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -100,26 +107,31 @@ class _TextFieldState extends State<_TextField> {
               pass: true,
               texto: 'Contraseña'),
           const SizedBox(height: 20),
+          // TextFieldCustom(
+          //     icono: Icons.visibility_off,
+          //     type: TextInputType.text,
+          //     pass: true,
+          //     controller: passwordConfirma,
+          //     texto: 'Confimar Contraseña'),
+          // const SizedBox(height: 20),
           TextFieldCustom(
-              icono: Icons.visibility_off,
-              type: TextInputType.text,
-              pass: true,
-              controller: passwordConfirma,
-              texto: 'Confimar Contraseña'),
-          const SizedBox(height: 20),
-          TextFieldCustom(
-              controller: telefono,
+              controller: phone,
               icono: Icons.phone,
               type: TextInputType.number,
-              texto: 'Telefoo'),
+              texto: 'Telefo'),
           const SizedBox(height: 20),
           TextFieldCustom(
-              controller: direccion,
+              controller: adressfisical,
               icono: Icons.add_location_alt,
               type: TextInputType.number,
               texto: 'Dirección'),
           const SizedBox(height: 20),
-      _Botton(username: username.text)
+          _Botton(
+              email: email.text,
+              username: username.text,
+              password: password.text,
+              phone: phone.text,
+              adressfisical: adressfisical.text)
         ],
       ),
     );

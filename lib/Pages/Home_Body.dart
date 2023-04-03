@@ -10,14 +10,55 @@ import 'productos/Recent_Products.dart';
 import 'slider/slider.dart';
 import 'category/category_productos.dart';
 
-class HomeBody extends StatefulWidget {
-  const HomeBody({super.key});
+// class HomeBody extends StatefulWidget {
+//   final String usernamed;
+//   const HomeBody({super.key, required this.usernamed});
 
-  @override
-  State<HomeBody> createState() => _HomeBodyState();
-}
+//   @override
+//   State<HomeBody> createState() => HomeBodyState();
+// }
 
-class _HomeBodyState extends State<HomeBody> {
+// class HomeBodyState extends State<HomeBody> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: SafeArea(
+//         child: Padding(
+//           padding: const EdgeInsets.all(8.0),
+//           child: SingleChildScrollView(
+//             child: Column(
+//               children: [
+//                 CustomAppBar(username: user,),
+//                 SizedBox(
+//                   height: 20,
+//                 ),
+//                 SearchBar(),
+//                 SizedBox(
+//                   height: 20,
+//                 ),
+//                 ProductoSlider(),
+//                 SizedBox(
+//                   height: 20,
+//                 ),
+//                 CategorPage(),
+//                 SizedBox(
+//                   width: 20,
+//                 ),
+//                 Container(height: 250, child: RecentProducts())
+//               ],
+//             ),
+//           ),
+//         ),
+//       ),
+//       drawer: const Drawer(),
+//     );
+//   }
+// }
+
+class HomeBody extends StatelessWidget {
+  final String username;
+  const HomeBody({super.key, required this.username});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +68,9 @@ class _HomeBodyState extends State<HomeBody> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                CustomAppBar(),
+                CustomAppBar(
+                  username: username,
+                ),
                 SizedBox(
                   height: 20,
                 ),
