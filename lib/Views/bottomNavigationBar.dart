@@ -30,9 +30,10 @@ class bottomNavigationBar extends StatelessWidget {
             ),
             boxShadow: [
               BoxShadow(
-                  color: Color(0xFFDADADA),
+                  color: Colors.transparent,
                   offset: Offset(0, -15),
-                  blurRadius: 20)
+                  blurRadius: 200,
+                  blurStyle: BlurStyle.normal)
             ]),
         child: SafeArea(
             child: Row(
@@ -63,8 +64,11 @@ class bottomNavigationBar extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => FavrtScreen(
+                        builder: (context) => FavoritesPage(
+                              key:
+                                  UniqueKey(), // Agregar una clave única para evitar errores
                               username: username,
+                              favorites: [],
                             )));
               },
             ),
@@ -107,3 +111,81 @@ class bottomNavigationBar extends StatelessWidget {
     );
   }
 }
+
+// El error indica que no se ha definido un método 
+//llamado FavrtScreen en la clase _BottonBravState, 
+//y sugiere que se corrija el nombre del método o se
+// defina uno nuevo con ese nombre.
+// Para solucionar este error, debemos definir 
+//el método FavrtScreen en la clase _BottonBravState o 
+//cambiar el nombre del método en el código donde se llama.
+// Si decidimos definir el método FavrtScreen, podemos hacerlo 
+//de la siguiente manera:
+
+// class _BottonBravState extends State<BottonBrav> {
+//   int _selectedIndex = 0;
+//   static const List<Widget> _widgetOptions = <Widget>[
+//     HomeScreen(
+//       username: '',
+//     ),
+//     // NotificationScreen(),
+//     // SettingsScreen(),
+//     FavrtScreen(username: 'example_username'),
+//   ];
+
+//   void _onItemTapped(int index) {
+//     setState(() {
+//       _selectedIndex = index;
+//     });
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: Center(
+//         child: _widgetOptions.elementAt(_selectedIndex),
+//       ),
+//       bottomNavigationBar: BottomNavigationBar(
+//         items: const <BottomNavigationBarItem>[
+//           BottomNavigationBarItem(
+//             icon: Icon(Icons.home),
+//             label: 'Home',
+//           ),
+//           BottomNavigationBarItem(
+//             icon: Icon(Icons.notifications),
+//             label: 'Notifications',
+//           ),
+//           BottomNavigationBarItem(
+//             icon: Icon(Icons.settings),
+//             label: 'Settings',
+//           ),
+//           BottomNavigationBarItem(
+//             icon: Icon(Icons.favorite),
+//             label: 'Favorites',
+//           ),
+//         ],
+//         currentIndex: _selectedIndex,
+//         selectedItemColor: Colors.blue,
+//         onTap: _onItemTapped,
+//       ),
+//     );
+//   }
+// }
+
+// class FavrtScreen extends StatelessWidget {
+//   final String username;
+
+//   const FavrtScreen({Key? key, required this.username}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text('Favorites'),
+//       ),
+//       body: const Center(
+//         child: Text('Favorites Screen'),
+//       ),
+//     );
+//   }
+// }

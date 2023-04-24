@@ -76,7 +76,7 @@ class CheckoutCard extends StatelessWidget {
                   width: (190),
                   child: ElevatedButton(
                     onPressed: () {},
-                    child: const Text("Verificar"),
+                    child: const Text("COMPRAR"),
                   ),
                 ),
               ],

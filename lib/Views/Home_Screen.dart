@@ -1,32 +1,12 @@
-// ignore: file_names
-// ignore_for_file: camel_case_types, prefer_const_constructors, file_names, duplicate_ignore
+// ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import '../Repositories/Constant.dart';
-import 'Home_Body.dart';
-import 'enum.dart';
-import 'bottomNavigationBar.dart';
-
-// class HomeScreen extends StatefulWidget {
-//   final String username;
-//   const HomeScreen({Key? key, required this.username}) : super(key: key);
-
-//   @override
-//   State<HomeScreen> createState() => _HomeScreenState();
-// }
-
-// class _HomeScreenState extends State<HomeScreen> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return const Scaffold(
-//       backgroundColor: KBGColor,
-//       body: HomeBody(),
-//       bottomNavigationBar: bottomNavigationBar(
-//         selectedMenu: MenuState.home,
-//       ),
-//     );
-//   }
-// }
+import 'package:onlinesports/Repositories/Constant.dart';
+import 'package:onlinesports/Views/botonbar.dart';
+import 'package:onlinesports/Views/bottomNavigationBar.dart';
+//import 'package:onlinesports/Views/bottomNavigationBar.dart';
+import 'package:onlinesports/Views/enum.dart';
+import 'home_body.dart';
 
 class HomeScreen extends StatelessWidget {
   final String username;

@@ -17,15 +17,16 @@ class LogoHeader extends StatelessWidget {
             boxShadow: const [
               BoxShadow(blurRadius: 10, color: Colors.black26)
             ]),
-        child: const Align(
-            alignment: Alignment.center,
-            // ignore: prefer_const_constructors
-            child: Text('OnlineSport',
-                style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black))),
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Image.asset(
+            'assets/imags/Check_logo.png',
+            // height: 10,
+          ),
+        ),
       ),
     );
   }
 }
+
+// 

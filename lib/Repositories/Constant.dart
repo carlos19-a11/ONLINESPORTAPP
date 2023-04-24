@@ -12,6 +12,7 @@ const KBGSecunColor = Color.fromARGB(255, 55, 132, 227);
 
 const KBGColor = Color(0xfffafafa);
 const Color KBCcolor = Color(0xFFE74C3C);
+const Kbcolors = Colors.transparent;
 
 // color al texto
 

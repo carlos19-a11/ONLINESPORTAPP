@@ -9,7 +9,7 @@ import '../bottomNavigationBar.dart';
 class UsuarioPage extends StatelessWidget {
   final String username;
 
-  const UsuarioPage({super.key, required this.username});
+  const UsuarioPage({Key? key, required this.username}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -43,8 +43,28 @@ class UsuarioPage extends StatelessWidget {
           )
         ],
       ),
-      body: ListView(children: [
-        Column(
+      body:
+          // Container(
+          //   child: SingleChildScrollView(
+          //     physics: BouncingScrollPhysics(),
+          //     child: Column(
+          //       children: [
+          //         Container(
+          //           width: double.infinity,
+          //           height: 150,
+          //           decoration: const BoxDecoration(
+          //               color: KBGSecunColor,
+          //               borderRadius: BorderRadius.only(
+          //                   bottomLeft: Radius.circular(20),
+          //                   bottomRight: Radius.circular(20))),
+          //         )
+          //       ],
+          //     ),
+          //   ),
+          // ),
+          SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Column(
           children: [
             Container(
               width: double.infinity,
@@ -124,7 +144,7 @@ class UsuarioPage extends StatelessWidget {
                 title: 'Email', value: 'andresperes458@gmail.com')
           ],
         ),
-      ]),
+      ),
       bottomNavigationBar: bottomNavigationBar(
         selectedMenu: MenuState.profile,
         username: username,

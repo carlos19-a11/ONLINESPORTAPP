@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, file_names
 
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 import '../Repositories/Constant.dart';
@@ -30,11 +32,11 @@ class CustomAppBar extends StatelessWidget {
             ),
           ),
         ),
-        // ignore: duplicate_ignore
         Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           // ignore: prefer_const_literals_to_create_immutables
           children: [
-            Text("Unair"),
+            Text("OnliSport"),
             Text(
               "Bienvenido $username",
               style: TextStyle(
@@ -49,7 +51,9 @@ class CustomAppBar extends StatelessWidget {
             'assets/icons/hombre.png',
           ),
           backgroundColor: KPrimaryColor,
-        )
+        ),
+
+        // ignore: duplicate_ignore
       ],
     );
   }

@@ -1,6 +1,5 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
-
-import '../Widgets/text_frave.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
@@ -8,58 +7,75 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          title: const TextFrave(
-              text: 'BIENVENIDOS',
-              color: Colors.black87,
-              fontWeight: FontWeight.w500),
-          elevation: 0,
-          backgroundColor: Colors.white,
-          centerTitle: true,
-        ),
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20, top: 450),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _ButtonCustom(
-                    title: 'SIGUENTE ',
-                    onPressed: () =>
-                        Navigator.of(context).pushNamed('LoginTenPage')),
-              ],
-            ),
+      backgroundColor: Colors.grey[300],
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 25),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 25.0,
+                  vertical: 15.0,
+                ),
+                child: Image.asset(
+                  'assets/imags/Check_logo.png',
+                  //height: 240,
+                ),
+              ),
+              const Text(
+                'ELIGE LO MEJOR, SIENTETE MEJOR ',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                  color: Colors.black,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 48),
+              const Text(
+                'Úsalo y siéntete bien',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  color: Colors.black54,
+                ),
+              ),
+              const SizedBox(height: 10),
+              const Text(
+                'Una tienda donde las tendencias se encuentran con la clase',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                  color: Colors.grey,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 48),
+              GestureDetector(
+                onTap: () => Navigator.of(context).pushNamed('LoginTenPage'),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[900],
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  padding: const EdgeInsets.all(25),
+                  child: const Center(
+                    child: Text(
+                      'SIGUIENTE',
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+            ],
           ),
-        ));
-  }
-}
-
-class _ButtonCustom extends StatelessWidget {
-  final VoidCallback onPressed;
-  final String title;
-
-  const _ButtonCustom({required this.onPressed, required this.title});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 15.0),
-      child: InkWell(
-        onTap: onPressed,
-        splashColor: const Color(0xffEFF3F6),
-        child: Container(
-          height: 55,
-          width: double.infinity,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10.0),
-              color: const Color(0xff2954DE)),
-          child: Center(
-              child: TextFrave(
-                  text: title,
-                  color: Colors.white,
-                  fontSize: 19,
-                  fontWeight: FontWeight.w500)),
         ),
       ),
     );

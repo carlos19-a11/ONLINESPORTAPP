@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously, prefer_const_constructors, avoid_print
+
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -5,10 +7,15 @@ import 'package:onlinesports/Views/Home_Screen.dart';
 
 import 'package:onlinesports/Views/auth/login_screen.dart';
 
-const ip = "http://192.168.1.11:3000/api/";
+const ip = "http://192.168.1.16:3000/api/";
 
 void signUp(email, username, password, phone, adressfisical,
     BuildContext context) async {
+  print(email);
+  print(username);
+  print(password);
+  print(phone);
+  print(adressfisical);
   final url = Uri.parse('${ip}auth/signup');
   final body = {
     "username": username,
