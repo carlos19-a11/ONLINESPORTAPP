@@ -7,7 +7,7 @@ import 'package:onlinesports/Views/Home_Screen.dart';
 
 import 'package:onlinesports/Views/auth/login_screen.dart';
 
-const ip = "http://192.168.1.16:3000/api/";
+const ip = "http://192.168.1.14:3000/api/";
 
 void signUp(email, username, password, phone, adressfisical,
     BuildContext context) async {

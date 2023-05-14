@@ -60,9 +60,9 @@ class _RecentProductsState extends State<RecentProducts> {
       if (response.statusCode == 200) {
         print(response);
         // final responseData = jsonDecode(response.body);
+        
         Map<String, dynamic> jsonMap = json.decode(response.body);
         data = jsonMap['data']['username'];
-        print(jsonMap);
         // print(responseData.data);
         // Navigator.push(
         //   context,
