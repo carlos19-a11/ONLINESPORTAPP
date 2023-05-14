@@ -1,98 +1,50 @@
-// ignore_for_file: avoid_print, prefer_const_constructors, use_key_in_widget_constructors, library_private_types_in_public_api, prefer_typing_uninitialized_variables
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:onlinesports/Repositories/Constant.dart';
-import 'package:onlinesports/Services/productos.dart';
-
-import 'dart:convert';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:http/http.dart' as http;
+import 'package:onlinesports/Repositories/Constant.dart';
+import 'package:onlinesports/Views/pages/DetellesShoes.dart';
 
-import '../pages/DetellesShoes.dart';
-import '../../Model/shoes.dart';
+import '../../Model/Products.dart';
+import '../../Services/auth.dart';
 
 class RecentProducts extends StatefulWidget {
+  const RecentProducts({super.key});
+
   @override
   State<RecentProducts> createState() => _RecentProductsState();
 }
 
 class _RecentProductsState extends State<RecentProducts> {
-  // final List<Map<String, dynamic>> productList = [
-  //   {
-  //     'name': 'Bolso Adidas ',
-  //     'image': 'assets/imags/Bolso-Taycan.png',
-  //     'price': "120.000",
-  //     'disc': ''
-  //   },
-  //   {
-  //     'name': 'Zapatillas Reebok',
-  //     'image': 'assets/imags/calzado.png',
-  //     'price': "300.000",
-  //     'disc': ''
-  //   },
-  //   {
-  //     'name': 'Camiseta Nike',
-  //     'image': 'assets/imags/camiseta.jpg',
-  //     'price': "100.000",
-  //     'disc': ''
-  //   },
-  //   {
-  //     'name': 'Ropa Deportiva ',
-  //     'image': 'assets/imags/Ropa_deportiva_hombre.png',
-  //     'price': "80.000",
-  //     'disc': ''
-  //   },
-  // ];
-
-  List data = [];
+  List<Datum> _listProducts = [];
+  @override
   void initState() {
+    // TODO: implement initState
     super.initState();
-    const ip = "http://192.168.1.16:3000/api/";
-    void obtenerProductos() async {
-      print('obtenerProductos');
-      final url = Uri.parse('${ip}products/allProducts');
+    _loadProductos();
+  }
 
-      // final url = Uri.parse('https://fakeapi.platzi.com/en/rest/products');
-      //final body = {"email": email, "password": password};
-
-      final headers = {'Content-Type': 'application/json'};
-
-      final response = await http.get(url);
-      if (response.statusCode == 200) {
-        print(response);
-        // final responseData = jsonDecode(response.body);
-        
-        Map<String, dynamic> jsonMap = json.decode(response.body);
-        data = jsonMap['data']['username'];
-        // print(responseData.data);
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //       builder: (context) => HomeScreen(
-        //             username: username,
-        //           )),
-        // );
-
-        // print(response.body);
-      } else {
-        // print()
-        print('Error: ${response.reasonPhrase}');
-      }
-    }
+  void _loadProductos() async {
+    List<Datum> listProducts = await obtenerProductos();
+    setState(() {
+      _listProducts = listProducts;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-        itemCount: data.length,
+        itemCount: _listProducts.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2, childAspectRatio: 0.58),
         itemBuilder: (BuildContext context, int index) {
           return RecentSingleProducts(
-            recentSingleProdDisc: data[index]['nombre'],
-            recentSingleProdName: data[index]['descripcion'],
-            recentSingleProdImage: data[index]['img'],
-            recentSingleProdPrice: data[index]['precio'],
-          );
+              recentSingleProdDisc: _listProducts[index].nombre,
+              recentSingleProdName: _listProducts[index].descripcion,
+              recentSingleProdImage: _listProducts[index].img,
+              recentSingleProdPrice: _listProducts[index].precio.toString());
         });
   }
 }
@@ -120,11 +72,10 @@ class _RecentSingleProductsState extends State<RecentSingleProducts> {
 
   final Color inactiveColor = Colors.black38;
 
-  var shoes;
-
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         GestureDetector(
           onTap: () {
@@ -134,6 +85,7 @@ class _RecentSingleProductsState extends State<RecentSingleProducts> {
               },
             ));
           },
+          //Contenerdor de la imagenes
           child: Container(
             height: 180,
             width: 160,
@@ -141,7 +93,7 @@ class _RecentSingleProductsState extends State<RecentSingleProducts> {
               borderRadius: BorderRadius.circular(30),
               color: KPrimaryColor,
             ),
-            child: Image.asset(widget.recentSingleProdImage),
+            child: Image.network(widget.recentSingleProdImage),
           ),
         ),
         ListTile(

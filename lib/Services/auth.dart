@@ -7,6 +7,8 @@ import 'package:onlinesports/Views/Home_Screen.dart';
 
 import 'package:onlinesports/Views/auth/login_screen.dart';
 
+import '../Model/Products.dart';
+
 const ip = "http://192.168.1.14:3000/api/";
 
 void signUp(email, username, password, phone, adressfisical,
@@ -71,4 +73,13 @@ void signIn(email, password, BuildContext context) async {
     // print()
     print('Error: ${response.reasonPhrase}');
   }
+}
+
+Future<List<Datum>> obtenerProductos() async {
+  print('obtenerProductos');
+  final url = Uri.parse('${ip}products/allProducts');
+  final respuesta = await http.get(url);
+  // print(respuesta.body);
+  final jsonResponse = json.decode(respuesta.body);
+  return Products.fromJson(jsonResponse).data;
 }
