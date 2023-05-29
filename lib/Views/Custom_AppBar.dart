@@ -1,7 +1,5 @@
 // ignore_for_file: prefer_const_constructors, file_names
 
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
 import '../Repositories/Constant.dart';

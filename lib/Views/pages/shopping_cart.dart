@@ -5,8 +5,10 @@ import '../bottomNavigationBar.dart';
 
 class ShoppingCartScreen extends StatelessWidget {
   final String username;
+  final String usuario_id;
 
-  const ShoppingCartScreen({super.key, required this.username});
+  const ShoppingCartScreen(
+      {super.key, required this.username, required this.usuario_id});
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +16,10 @@ class ShoppingCartScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Shoppingcart'),
       ),
-      bottomNavigationBar: const bottomNavigationBar(
-        selectedMenu: MenuState.shoppingcart,
-        username: '',
-      ),
+      bottomNavigationBar: bottomNavigationBar(
+          selectedMenu: MenuState.shoppingcart,
+          username: username,
+          usuario_id: usuario_id),
     );
   }
 }

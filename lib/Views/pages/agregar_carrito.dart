@@ -5,9 +5,15 @@ import 'package:onlinesports/Repositories/Constant.dart';
 import 'package:onlinesports/Widgets/products/custom_widgets.dart';
 
 class AgregarCarritoBoton extends StatelessWidget {
-  final double monto;
+  final String monto;
+  final String idproducto;
+  final String usuario_id;
 
-  AgregarCarritoBoton({required this.monto});
+  AgregarCarritoBoton({
+    required this.monto,
+    required this.idproducto,
+    required this.usuario_id,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +34,10 @@ class AgregarCarritoBoton extends StatelessWidget {
               style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
             ),
             Spacer(),
-            BontonNaranja(text: 'Add to cart'),
+            BontonNaranja(
+                text: 'Add to cart',
+                idproducto: idproducto,
+                usuario_id: usuario_id),
             SizedBox(width: 20),
           ],
         ),

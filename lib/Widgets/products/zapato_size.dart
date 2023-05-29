@@ -2,24 +2,35 @@
 
 import 'package:flutter/material.dart';
 
-class ZapatoSize extends StatelessWidget {
+class ZapatoSize extends StatefulWidget {
+  final String recentSingleProdImage;
+
+  const ZapatoSize({
+    Key? key,
+    required this.recentSingleProdImage,
+  }) : super(key: key);
+  @override
+  State<ZapatoSize> createState() => _ZapatoSizeState();
+}
+
+class _ZapatoSizeState extends State<ZapatoSize> {
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
       child: Container(
         width: double.infinity,
-        height: 350,
+        height: 450,
         decoration: BoxDecoration(
           color: const Color(0xffFFCF53),
-          borderRadius: BorderRadius.circular(50),
+          borderRadius: BorderRadius.circular(45),
         ),
         child: Column(
           children: <Widget>[
             // zapato con sombra
-            _ZapatoConSombra(),
+            _ZapatoConSombra(urlImagen: widget.recentSingleProdImage),
             // todas la llatas
-            _ZapatoTallas(),
+            // _ZapatoTallas(),
           ],
         ),
       ),
@@ -84,14 +95,21 @@ class _TallaZapatoCaja extends StatelessWidget {
 }
 
 class _ZapatoConSombra extends StatelessWidget {
+  String urlImagen;
+
+  _ZapatoConSombra({
+    Key? key,
+    required this.urlImagen,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Stack(
-        children: const <Widget>[
-          Positioned(bottom: 10, right: 0, child: _ZapatoSombra()),
-          Image(image: AssetImage('assets/imags/calzado_black.png')),
+        children: <Widget>[
+          const Positioned(bottom: 10, right: 0, child: _ZapatoSombra()),
+          Image(image: NetworkImage(urlImagen)),
         ],
       ),
     );

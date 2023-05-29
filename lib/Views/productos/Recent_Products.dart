@@ -1,5 +1,6 @@
-import 'dart:convert';
+// ignore_for_file: library_private_types_in_public_api, unused_import, implementation_imports, unnecessary_import, file_names
 
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -11,7 +12,9 @@ import '../../Model/Products.dart';
 import '../../Services/auth.dart';
 
 class RecentProducts extends StatefulWidget {
-  const RecentProducts({super.key});
+  final String usuario_id;
+
+  const RecentProducts({super.key, required this.usuario_id});
 
   @override
   State<RecentProducts> createState() => _RecentProductsState();
@@ -21,7 +24,6 @@ class _RecentProductsState extends State<RecentProducts> {
   List<Datum> _listProducts = [];
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _loadProductos();
   }
@@ -37,14 +39,16 @@ class _RecentProductsState extends State<RecentProducts> {
   Widget build(BuildContext context) {
     return GridView.builder(
         itemCount: _listProducts.length,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, childAspectRatio: 0.58),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2, mainAxisSpacing: 20, childAspectRatio: 0.90),
         itemBuilder: (BuildContext context, int index) {
           return RecentSingleProducts(
               recentSingleProdDisc: _listProducts[index].nombre,
+              recentSingleProdId: _listProducts[index].productoId,
               recentSingleProdName: _listProducts[index].descripcion,
               recentSingleProdImage: _listProducts[index].img,
-              recentSingleProdPrice: _listProducts[index].precio.toString());
+              recentSingleProdPrice: _listProducts[index].precio.toString(),
+              usuario_id: widget.usuario_id);
         });
   }
 }
@@ -54,6 +58,8 @@ class RecentSingleProducts extends StatefulWidget {
   final String recentSingleProdImage;
   final String recentSingleProdPrice;
   final String recentSingleProdDisc;
+  final int recentSingleProdId;
+  final String usuario_id;
 
   const RecentSingleProducts({
     Key? key,
@@ -61,6 +67,8 @@ class RecentSingleProducts extends StatefulWidget {
     required this.recentSingleProdImage,
     required this.recentSingleProdPrice,
     required this.recentSingleProdDisc,
+    required this.recentSingleProdId,
+    required this.usuario_id,
   }) : super(key: key);
 
   @override
@@ -81,10 +89,18 @@ class _RecentSingleProductsState extends State<RecentSingleProducts> {
           onTap: () {
             Navigator.of(context).push(PageRouteBuilder(
               pageBuilder: (context, animation, _) {
-                return DetellesShoes();
+                return DetellesShoes(
+                  recentSingleProdDisc: widget.recentSingleProdDisc,
+                  recentSingleProdId: widget.recentSingleProdId,
+                  recentSingleProdImage: widget.recentSingleProdImage,
+                  recentSingleProdName: widget.recentSingleProdName,
+                  recentSingleProdPrice: widget.recentSingleProdPrice,
+                  usuario_id: widget.usuario_id,
+                );
               },
             ));
           },
+
           //Contenerdor de la imagenes
           child: Container(
             height: 180,

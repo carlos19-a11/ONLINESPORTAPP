@@ -8,8 +8,10 @@ import '../bottomNavigationBar.dart';
 
 class UsuarioPage extends StatelessWidget {
   final String username;
-
-  const UsuarioPage({Key? key, required this.username}) : super(key: key);
+  final String usuario_id;
+  const UsuarioPage(
+      {Key? key, required this.username, required this.usuario_id})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -148,6 +150,7 @@ class UsuarioPage extends StatelessWidget {
       bottomNavigationBar: bottomNavigationBar(
         selectedMenu: MenuState.profile,
         username: username,
+        usuario_id: usuario_id,
       ),
     );
   }

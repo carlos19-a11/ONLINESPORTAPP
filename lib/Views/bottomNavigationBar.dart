@@ -10,9 +10,13 @@ import 'pages/user.dart';
 // ignore: camel_case_types
 class bottomNavigationBar extends StatelessWidget {
   final String username;
+  final String usuario_id;
 
   const bottomNavigationBar(
-      {Key? key, required this.selectedMenu, required this.username})
+      {Key? key,
+      required this.selectedMenu,
+      required this.username,
+      required this.usuario_id})
       : super(key: key);
   final MenuState selectedMenu;
 
@@ -50,6 +54,7 @@ class bottomNavigationBar extends StatelessWidget {
                     MaterialPageRoute(
                         builder: (context) => HomeScreen(
                               username: username,
+                              usuario_id: usuario_id,
                             )));
               },
             ),
@@ -64,11 +69,9 @@ class bottomNavigationBar extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => FavoritesPage(
-                              key:
-                                  UniqueKey(), // Agregar una clave única para evitar errores
-                              username: username,
-                              favorites: [],
+                        builder: (context) => FavrtScreen(
+                              // Agregar una clave única para evitar errores
+                              username: username, usuario_id: usuario_id,
                             )));
               },
             ),
@@ -102,6 +105,7 @@ class bottomNavigationBar extends StatelessWidget {
                     MaterialPageRoute(
                         builder: (context) => UsuarioPage(
                               username: username,
+                              usuario_id: usuario_id,
                             )));
               },
             ),

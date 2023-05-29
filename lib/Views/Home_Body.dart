@@ -13,7 +13,8 @@ import '../Widgets/categoriy/category_productos.dart';
 
 class HomeBody extends StatelessWidget {
   final String username;
-  const HomeBody({super.key, required this.username});
+  final String usuario_id;
+  const HomeBody({super.key, required this.username, required this.usuario_id});
 
   get currentPage => null;
 
@@ -45,7 +46,8 @@ class HomeBody extends StatelessWidget {
                 SizedBox(
                   width: 20,
                 ),
-                Container(height: 250, child: RecentProducts())
+                Container(
+                    height: 250, child: RecentProducts(usuario_id: usuario_id))
               ],
             ),
           ),

@@ -9,7 +9,7 @@ import 'package:onlinesports/Views/auth/login_screen.dart';
 
 import '../Model/Products.dart';
 
-const ip = "http://192.168.1.14:3000/api/";
+const ip = "http://192.168.1.20:3000/api/";
 
 void signUp(email, username, password, phone, adressfisical,
     BuildContext context) async {
@@ -58,14 +58,14 @@ void signIn(email, password, BuildContext context) async {
     // final responseData = jsonDecode(response.body);
     Map<String, dynamic> jsonMap = json.decode(response.body);
     String username = jsonMap['data']['username'];
+    int id = jsonMap['data']['idUser'];
     print(username);
     // print(responseData.data);
     Navigator.push(
       context,
       MaterialPageRoute(
-          builder: (context) => HomeScreen(
-                username: username,
-              )),
+          builder: (context) =>
+              HomeScreen(username: username, usuario_id: id.toString())),
     );
 
     print(response.body);
@@ -79,7 +79,7 @@ Future<List<Datum>> obtenerProductos() async {
   print('obtenerProductos');
   final url = Uri.parse('${ip}products/allProducts');
   final respuesta = await http.get(url);
-  // print(respuesta.body);
+  print(respuesta.body);
   final jsonResponse = json.decode(respuesta.body);
   return Products.fromJson(jsonResponse).data;
 }

@@ -10,17 +10,18 @@ import 'home_body.dart';
 
 class HomeScreen extends StatelessWidget {
   final String username;
-  const HomeScreen({super.key, required this.username});
+  final String usuario_id;
+  const HomeScreen(
+      {super.key, required this.username, required this.usuario_id});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: KBGColor,
-      body: HomeBody(
-        username: username,
-      ),
+      body: HomeBody(usuario_id: usuario_id),
       bottomNavigationBar: bottomNavigationBar(
         username: username,
+        usuario_id: usuario_id,
         selectedMenu: MenuState.home,
       ),
     );

@@ -11,7 +11,5 @@ Map<String, Widget Function(BuildContext)> routes = {
   'LoginTenPage': (_) => LoginTenPage(),
   // 'HomenScreen': (_) => const HomeScreen(),
   CartScreen.routeName: (_) => const CartScreen(),
-  'UsuarioPage': (_) => const UsuarioPage(
-        username: '',
-      ),
+  'UsuarioPage': (_) => const UsuarioPage(username: '', usuario_id: ''),
 };
